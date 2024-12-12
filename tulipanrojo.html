@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,112 +12,23 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to bottom, #ffefba, #ff6f61);
-            overflow: hidden;
+            background: linear-gradient(to bottom, #d4fc79, #96e6a1);
         }
 
-        .tulip {
-            position: relative;
-            width: 120px;
-            height: 250px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stem {
-            width: 12px;
-            height: 200px;
-            background: linear-gradient(to bottom, #4caf50, #388e3c);
-            border-radius: 6px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .leaf {
-            position: absolute;
-            width: 100px;
-            height: 60px;
-            background: linear-gradient(to bottom, #66bb6a, #4caf50);
-            border-radius: 50%;
-            bottom: 40px;
-            transform-origin: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            animation: sway 4s infinite ease-in-out;
-        }
-
-        .leaf.left {
-            transform: rotate(-45deg);
-            left: -60px;
-        }
-
-        .leaf.right {
-            transform: rotate(45deg);
-            right: -60px;
-        }
-
-        .flower {
-            position: absolute;
-            bottom: 200px;
+        .tulip-container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            z-index: 2;
         }
 
-        .petal {
-            width: 60px;
-            height: 80px;
-            background: radial-gradient(circle, #ff6f61, #e53935);
-            border-radius: 50% 50% 0 0;
-            transform-origin: bottom center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            animation: bloom 2s ease-in-out;
-        }
-
-        .petal.one {
-            transform: rotate(-30deg);
-            position: absolute;
-            left: 20px;
-        }
-
-        .petal.two {
-            transform: rotate(30deg);
-            position: absolute;
-            right: 20px;
-        }
-
-        .petal.center {
-            transform: rotate(0);
-            position: relative;
-            bottom: 20px;
-        }
-
-        @keyframes sway {
-            0%, 100% {
-                transform: rotate(-45deg);
-            }
-            50% {
-                transform: rotate(-50deg);
-            }
-        }
-
-        @keyframes bloom {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        svg {
+            width: 300px;
+            height: auto;
         }
 
         .back-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+            margin-top: 20px;
             padding: 0.5rem 1rem;
             font-size: 1rem;
             color: white;
@@ -129,19 +40,42 @@
         .back-btn:hover {
             background: #333;
         }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+        }
+
+        .tulip {
+            animation: sway 2s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
     </style>
 </head>
 <body>
-    <div class="tulip">
-        <div class="stem"></div>
-        <div class="leaf left"></div>
-        <div class="leaf right"></div>
-        <div class="flower">
-            <div class="petal center"></div>
-            <div class="petal one"></div>
-            <div class="petal two"></div>
-        </div>
+    <div class="tulip-container">
+        <svg class="tulip" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Stem -->
+            <rect x="95" y="150" width="10" height="250" fill="green" rx="5"></rect>
+
+            <!-- Leaves -->
+            <path d="M100 250 C70 200, 20 250, 80 300" fill="green"></path>
+            <path d="M100 250 C130 200, 180 250, 120 300" fill="green"></path>
+
+            <!-- Petals -->
+            <path d="M100 100 C70 50, 30 120, 100 180" fill="#e63946"></path>
+            <path d="M100 100 C130 50, 170 120, 100 180" fill="#e63946"></path>
+            <path d="M100 100 C70 80, 130 80, 100 180" fill="#f77f00"></path>
+
+            <!-- Highlight -->
+            <circle cx="100" cy="120" r="15" fill="rgba(255, 255, 255, 0.5)"></circle>
+        </svg>
+
+        <a href="index.html" class="back-btn">Volver</a>
     </div>
-    <a href="index.html" class="back-btn">Volver</a>
 </body>
 </html>
