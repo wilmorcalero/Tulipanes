@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulipán Rojo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffefba, #ff6f61);
+            overflow: hidden;
+        }
+
+        .tulip {
+            position: relative;
+            width: 100px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .stem {
+            position: absolute;
+            width: 10px;
+            height: 200px;
+            background: #4caf50;
+            border-radius: 5px;
+            bottom: 0;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: #4caf50;
+            border-radius: 50%;
+            bottom: 40px;
+            transform: rotate(-30deg);
+            left: -40px;
+            animation: sway 3s infinite ease-in-out;
+        }
+
+        .leaf.right {
+            transform: rotate(30deg);
+            right: -40px;
+            left: unset;
+        }
+
+        .flower {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 70px solid #ff0000;
+            bottom: 160px;
+            animation: bloom 2s ease-in-out;
+        }
+
+        .petal {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 40px solid #ff6f61;
+            bottom: 160px;
+            transform-origin: center bottom;
+            animation: bloom 2s ease-in-out;
+        }
+
+        .petal.one {
+            transform: rotate(-45deg);
+        }
+
+        .petal.two {
+            transform: rotate(45deg);
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-30deg);
+            }
+            50% {
+                transform: rotate(-40deg);
+            }
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: scaleY(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        .back-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: white;
+            background: #444;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="tulip">
+        <div class="stem"></div>
+        <div class="leaf"></div>
+        <div class="leaf right"></div>
+        <div class="flower"></div>
+        <div class="petal one"></div>
+        <div class="petal two"></div>
+    </div>
+    <a href="index.html" class="back-btn">Volver</a>
+</body>
+</html>
