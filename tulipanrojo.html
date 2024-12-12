@@ -18,86 +18,101 @@
 
         .tulip {
             position: relative;
-            width: 100px;
-            height: 150px;
+            width: 120px;
+            height: 250px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         .stem {
-            position: absolute;
-            width: 10px;
+            width: 12px;
             height: 200px;
-            background: #4caf50;
-            border-radius: 5px;
-            bottom: 0;
+            background: linear-gradient(to bottom, #4caf50, #388e3c);
+            border-radius: 6px;
+            position: relative;
+            z-index: 1;
         }
 
         .leaf {
             position: absolute;
-            width: 80px;
-            height: 40px;
-            background: #4caf50;
+            width: 100px;
+            height: 60px;
+            background: linear-gradient(to bottom, #66bb6a, #4caf50);
             border-radius: 50%;
             bottom: 40px;
-            transform: rotate(-30deg);
-            left: -40px;
-            animation: sway 3s infinite ease-in-out;
+            transform-origin: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        .leaf.left {
+            transform: rotate(-45deg);
+            left: -60px;
         }
 
         .leaf.right {
-            transform: rotate(30deg);
-            right: -40px;
-            left: unset;
+            transform: rotate(45deg);
+            right: -60px;
         }
 
         .flower {
             position: absolute;
+            bottom: 200px;
             width: 0;
             height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 70px solid #ff0000;
-            bottom: 160px;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 80px solid #e53935;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             animation: bloom 2s ease-in-out;
+            z-index: 2;
         }
 
         .petal {
             position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-bottom: 40px solid #ff6f61;
-            bottom: 160px;
-            transform-origin: center bottom;
+            bottom: 240px;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle, #ff6f61, #e53935);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 3;
             animation: bloom 2s ease-in-out;
         }
 
         .petal.one {
-            transform: rotate(-45deg);
+            transform: rotate(-30deg);
+            left: 20px;
         }
 
         .petal.two {
-            transform: rotate(45deg);
+            transform: rotate(30deg);
+            right: 20px;
+        }
+
+        .petal.center {
+            transform: rotate(0);
+            bottom: 220px;
         }
 
         @keyframes sway {
             0%, 100% {
-                transform: rotate(-30deg);
+                transform: rotate(-45deg);
             }
             50% {
-                transform: rotate(-40deg);
+                transform: rotate(-50deg);
             }
         }
 
         @keyframes bloom {
             0% {
-                transform: scaleY(0.5);
+                transform: scale(0.8);
                 opacity: 0;
             }
             100% {
-                transform: scaleY(1);
+                transform: scale(1);
                 opacity: 1;
             }
         }
@@ -122,11 +137,12 @@
 <body>
     <div class="tulip">
         <div class="stem"></div>
-        <div class="leaf"></div>
+        <div class="leaf left"></div>
         <div class="leaf right"></div>
         <div class="flower"></div>
         <div class="petal one"></div>
         <div class="petal two"></div>
+        <div class="petal center"></div>
     </div>
     <a href="index.html" class="back-btn">Volver</a>
 </body>
