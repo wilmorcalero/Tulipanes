@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,42 +59,39 @@
         .flower {
             position: absolute;
             bottom: 200px;
-            width: 0;
-            height: 0;
-            border-left: 60px solid transparent;
-            border-right: 60px solid transparent;
-            border-bottom: 80px solid #e53935;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation: bloom 2s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             z-index: 2;
         }
 
         .petal {
-            position: absolute;
-            bottom: 240px;
             width: 60px;
             height: 80px;
             background: radial-gradient(circle, #ff6f61, #e53935);
             border-radius: 50% 50% 0 0;
             transform-origin: bottom center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            z-index: 3;
             animation: bloom 2s ease-in-out;
         }
 
         .petal.one {
             transform: rotate(-30deg);
+            position: absolute;
             left: 20px;
         }
 
         .petal.two {
             transform: rotate(30deg);
+            position: absolute;
             right: 20px;
         }
 
         .petal.center {
             transform: rotate(0);
-            bottom: 220px;
+            position: relative;
+            bottom: 20px;
         }
 
         @keyframes sway {
@@ -139,10 +136,11 @@
         <div class="stem"></div>
         <div class="leaf left"></div>
         <div class="leaf right"></div>
-        <div class="flower"></div>
-        <div class="petal one"></div>
-        <div class="petal two"></div>
-        <div class="petal center"></div>
+        <div class="flower">
+            <div class="petal center"></div>
+            <div class="petal one"></div>
+            <div class="petal two"></div>
+        </div>
     </div>
     <a href="index.html" class="back-btn">Volver</a>
 </body>
